@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinkjelly.live</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e6a4bd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mx-auto px-2 py-4">
+
+        <h1 class="text-center mt-4 mb-8 text-4xl text-white uppercase filter drop-shadow">Pinkjelly</h1>
+
+        <nav class="my-8">
+            <ul class="flex justify-center">
+                <li class="mx-4"><a class="block bg-white bg-opacity-50 hover:bg-opacity-90 rounded px-8 py-3"
+                        href="https://twitch.tv/pinkjelly6">Twitch</a></li>
+                <li class="mx-4"><a class="block bg-white bg-opacity-50 hover:bg-opacity-90 rounded px-8 py-3"
+                        href="https://www.instagram.com/iampinkjelly/">Instagram</a></li>
+                <li class="mx-4"><a class="block bg-white bg-opacity-50 hover:bg-opacity-90 rounded px-8 py-3"
+                        href="https://twitter.com/iampinkjelly">Twitter</a>
+                </li>
+                <li class="mx-4"><a class="block bg-white bg-opacity-50 hover:bg-opacity-90 rounded px-8 py-3"
+                        href="https://discord.gg/DUka2Vv7wH">Discord</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="flex justify-center">
+            <div class="">
+                <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+                <div id="twitch-player" class="mx-auto">
+                    <script type="text/javascript">
+                        var options = {
+                            width: 750,
+                            height: 750 * (9 / 16),
+                            channel: "pinkjelly6",
+                            parent: ["localhost", "www.pinkjelly.live"]
+                        };
+                        var player = new Twitch.Player("twitch-player", options);
+                    </script>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
