@@ -263,10 +263,18 @@
             }
 
             function playAudio(audio) {
-                audio.addEventListener('canplaythrough', e => {
+                // Play when progress is sufficient and we're not playing.
+                audio.addEventListener('progress', e => {
+                    if (audio.readyState < 0 || (audio.duration > 0 && audio.currentTime > 0)) return;
                     audio.play();
                 });
-                if (audio.readyState >= 4) {
+                // Play when we can play.
+                audio.addEventListener('canplaythrough', e => {
+                    if (audio.duration > 0 && audio.currentTime > 0) return;
+                    audio.play();
+                });
+                // Play immediately if possible.
+                if (audio.readyState >= 1) {
                     audio.play();
                 }
             }
