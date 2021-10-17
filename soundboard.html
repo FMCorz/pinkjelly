@@ -19,96 +19,261 @@
 
         <h1 class="text-center mt-4 mb-8 text-4xl text-white uppercase filter drop-shadow">Pinkjelly's soundboard</h1>
 
-        <div class="grid grid-cols-3 gap-4">
-            <div class="dosomething">
-                <div class="text-lg font-bold">
-                    Aaaah
-                </div>
-                <div>
-                    <audio controls>
-                        <source src="sounds/aaah.ogg" type="audio/ogg">
-                    </audio>
-                </div>
-            </div>
-
-            <div class="dosomething">
-                <div class="text-lg font-bold">Absolutely huge</div>
-                <div><audio controls>
-                        <source src="sounds/absolutely-huge.ogg" type="audio/ogg">
-                    </audio></div>
-            </div>
-
-            <div class="dosomething">
-                <div class="text-lg font-bold">I like ...</div>
-                <div><audio controls>
-                        <source src="sounds/i-like-ox.ogg" type="audio/ogg">
-                    </audio></div>
-            </div>
-
-            <div class="dosomething">
-                <div class="text-lg font-bold">I wouldn't mind...</div>
-                <div><audio controls>
-                        <source src="sounds/i-wouldnt-mind-5-inches.ogg" type="audio/ogg">
-                    </audio></div>
-            </div>
-
-            <div class="dosomething">
-                <div class="text-lg font-bold">Just put it in</div>
-                <div><audio controls>
-                        <source src="sounds/just-put-it-in.ogg" type="audio/ogg">
-                    </audio></div>
-            </div>
-
-            <div class="dosomething">
-                <div class="text-lg font-bold">Oh no</div>
-                <div><audio controls>
-                        <source src="sounds/oh-no.ogg" type="audio/ogg">
-                    </audio></div>
-            </div>
-
-            <div class="dosomething">
-                <div class="text-lg font-bold">Oooh the...</div>
-                <div><audio controls>
-                        <source src="sounds/ooo-the.ogg" type="audio/ogg">
-                    </audio></div>
-            </div>
-
-            <div class="dosomething">
-                <div class="text-lg font-bold">Oooh</div>
-                <div><audio controls>
-                        <source src="sounds/oooh.ogg" type="audio/ogg">
-                    </audio></div>
-            </div>
-
-            <div class="dosomething">
-                <div class="text-lg font-bold">Ooooh 2</div>
-                <div><audio controls>
-                        <source src="sounds/oooh2.ogg" type="audio/ogg">
-                    </audio></div>
-            </div>
-
-            <div class="dosomething">
-                <div class="text-lg font-bold">Shiiiit</div>
-                <div><audio controls>
-                        <source src="sounds/shiiiit.ogg" type="audio/ogg">
-                    </audio></div>
-            </div>
-            <div class="dosomething">
-                <div class="text-lg font-bold">That was hard</div>
-                <div> <audio controls>
-                        <source src="sounds/that-was-hard.ogg" type="audio/ogg">
-                    </audio></div>
-                <source src="sounds/uhmm.ogg" type="audio/ogg">
-                </audio>
-            </div>
-
-            <div class="dosomething">
-                <div class="text-lg font-bold">Uuuh uuh</div>
-                <div><audio controls>
-                        <source src="sounds/uuhuuh.ogg" type="audio/ogg">
-                    </audio></div>
-            </div>
+        <div class="flex items-center justify-center mt-4 mb-12 space-x-4">
+            <button id="play-random" class="shadow rounded bg-white text-black px-4 py-2 hover:bg-gray-100">Play random</button>
+            <button id="play-mashup" class="shadow rounded bg-white text-black px-4 py-2 hover:bg-gray-100">Random mashup</button>
         </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="sounds"></div>
+
+        <script>
+            const sounds = [
+                {
+                    label: 'Aaaah',
+                    src: 'sounds/aaah.mp3',
+                },
+                {
+                    label: 'Absolutely huge',
+                    src: 'sounds/absolutely-huge.mp3',
+                },
+                {
+                    label: 'Awwww',
+                    src: 'sounds/awww.mp3',
+                },
+                {
+                    label: 'Excuse me',
+                    src: 'sounds/excuse-me.mp3',
+                },
+                {
+                    label: 'Fucked it',
+                    src: 'sounds/fucked-it.mp3',
+                },
+                {
+                    label: 'Ha ha',
+                    src: 'sounds/ha-ha.mp3',
+                },
+                {
+                    label: 'Hhhooo',
+                    src: 'sounds/hhhooo.mp3',
+                },
+                {
+                    label: 'Holy shit',
+                    src: 'sounds/holy-shit.mp3',
+                },
+                {
+                    label: 'I am stressed',
+                    src: 'sounds/i-am-stressed.mp3',
+                },
+                {
+                    src: 'sounds/i-cant.mp3',
+                },
+                {
+                    src: 'sounds/i-dont-wanna-talk-about-it.mp3',
+                },
+                {
+                    src: 'sounds/i-like-ox.mp3',
+                },
+                {
+                    src: 'sounds/i-touched-his.mp3',
+                },
+                {
+                    src: 'sounds/i-touched-the-man.mp3',
+                },
+                {
+                    src: 'sounds/i-wanna-come.mp3',
+                },
+                {
+                    src: 'sounds/i-will-take-that.mp3',
+                },
+                {
+                    src: 'sounds/i-wouldnt-mind-5-inches.mp3',
+                },
+                {
+                    src: 'sounds/im-feeling-it.mp3',
+                },
+                {
+                    src: 'sounds/it-happened.mp3',
+                },
+                {
+                    src: 'sounds/its-everywhere.mp3',
+                },
+                {
+                    src: 'sounds/its-so-good.mp3',
+                },
+                {
+                    src: 'sounds/its-unexpectedly-thick.mp3',
+                },
+                {
+                    src: 'sounds/just-put-it-in.mp3',
+                },
+                {
+                    src: 'sounds/lets-go.mp3',
+                },
+                {
+                    src: 'sounds/make-it-work.mp3',
+                },
+                {
+                    src: 'sounds/my-controller-is-all-wet-now.mp3',
+                },
+                {
+                    src: 'sounds/nipples.mp3',
+                },
+                {
+                    src: 'sounds/nuts.mp3',
+                },
+                {
+                    src: 'sounds/oh-no.mp3',
+                },
+                {
+                    src: 'sounds/omg-you-guys.mp3',
+                },
+                {
+                    src: 'sounds/omg-you-guys-2.mp3',
+                },
+                {
+                    src: 'sounds/ooo-ill-take-that.mp3',
+                },
+                {
+                    src: 'sounds/ooo-the.mp3',
+                },
+                {
+                    src: 'sounds/oooh-ha-ha-ha.mp3',
+                },
+                {
+                    src: 'sounds/oooh.mp3',
+                },
+                {
+                    src: 'sounds/oooh2.mp3',
+                },
+                {
+                    src: 'sounds/pink.mp3',
+                },
+                {
+                    src: 'sounds/shiiiit.mp3',
+                },
+                {
+                    src: 'sounds/squeal.mp3',
+                },
+                {
+                    src: 'sounds/that-was-a-thick-one.mp3',
+                },
+                {
+                    src: 'sounds/that-was-hard.mp3',
+                },
+                {
+                    src: 'sounds/the-fuck.mp3',
+                },
+                {
+                    src: 'sounds/this-is-what-happens-when-you-get.mp3',
+                },
+                {
+                    src: 'sounds/uhmm.mp3',
+                },
+                {
+                    src: 'sounds/uuhuuh.mp3',
+                },
+                {
+                    src: 'sounds/whaaat.mp3',
+                },
+                {
+                    src: 'sounds/what-do-you-mean.mp3',
+                },
+                {
+                    src: 'sounds/what-is-going-on-right-now.mp3',
+                },
+                {
+                    src: 'sounds/yeah-man.mp3',
+                },
+            ];
+
+            function render(root) {
+                sounds.forEach(sound => {
+                    let labelFromSrc = sound.src.replace(/(^sounds\/)|(\.[a-z0-9]+$)/g, '').replace(/[_-]/g, ' ');
+                    labelFromSrc = labelFromSrc.charAt(0).toUpperCase() + labelFromSrc.slice(1);
+
+                    const div = document.createElement('div');
+                    const label = document.createElement('div');
+                    label.setAttribute('class', 'text-lg font-bold');
+                    label.textContent = sound.label || labelFromSrc;
+
+                    const audio = document.createElement('audio');
+                    audio.setAttribute('controls', true);
+                    audio.setAttribute('preload', 'auto');
+
+                    const source = document.createElement('source');
+                    source.setAttribute('src', sound.src);
+                    source.setAttribute('type', 'audio/mp3');
+
+                    div.appendChild(label);
+                    div.appendChild(audio);
+                    audio.appendChild(source);
+                    root.appendChild(div);
+                });
+            }
+
+            function registerButtons() {
+                document.getElementById('play-random').addEventListener('click', e => {
+                    e.preventDefault();
+                    const sound = sounds[Math.floor(Math.random() * sounds.length)];
+                    let audio = new Audio(sound.src);
+                    audio.addEventListener('ended', e => {
+                        audio.src = '';
+                        audio = undefined;
+                    });
+                    playAudio(audio);
+                });
+
+                document.getElementById('play-mashup').addEventListener('click', e => {
+                    e.preventDefault();
+
+                    const n = Math.floor(Math.random() * 4) + 2;
+                    const indexes = Array.from({ length: n }).reduce((carry) => {
+                        let idx;
+                        do {
+                            idx = Math.floor(Math.random() * sounds.length);
+                        } while (carry.includes(idx));
+                        return carry.concat(idx);
+                    }, []);
+
+                    playSequence(indexes.map(i => {
+                        return sounds[i];
+                    }));
+                });
+            }
+
+            function playSequence(sounds) {
+                let queue = sounds.map(sound => {
+                    const a = new Audio(sound.src);
+                    a.addEventListener('canplaythrough', () => { });
+                    return a;
+                });
+                queue.reverse();
+
+                function playNext() {
+                    let audio = queue.pop();
+                    if (!audio) return;
+                    audio.addEventListener('ended', e => {
+                        audio.src = '';
+                        playNext();
+                    });
+                    playAudio(audio);
+                }
+
+                playNext();
+            }
+
+            function playAudio(audio) {
+                audio.addEventListener('canplaythrough', e => {
+                    audio.play();
+                });
+                if (audio.readyState >= 4) {
+                    audio.play();
+                }
+            }
+
+            render(document.getElementById('sounds'));
+            registerButtons();
+        </script>
 </body>
 
 </html>
