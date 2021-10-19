@@ -187,7 +187,7 @@
         integrity="sha512-zN6KYOtONNTOGXz0RkWX2EpavN9VdIs+2w+To+fhciFv83YA9maUpi2lzZWrOfKXdFIZZomWufBznkyHi3a8oQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        var socket = io('https://api.pinkjelly.live');
+        var socket = io('https://pinkjelly.herokuapp.com');
         socket.on('play-sound', (args) => {
             playSound(args.id);
         });
