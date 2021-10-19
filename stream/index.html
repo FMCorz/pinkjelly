@@ -168,13 +168,17 @@
         ];
 
         function playSound(id) {
-            const sound = sounds.find(sound => sound.src === 'sounds/' + id + '.mp3');
+            let sound;
+            if (id === '_random') {
+                sound = sounds[Math.floor(Math.random() * sounds.length)];
+            } else {
+                sound = sounds.find(sound => sound.src === 'sounds/' + id + '.mp3');
+            }
+
             if (!sound) {
                 return;
             }
-            const audio = new Howl({
-                src: ['../' + sound.src]
-            });
+            const audio = new Howl({ src: ['../' + sound.src] });
             audio.play();
         }
 
