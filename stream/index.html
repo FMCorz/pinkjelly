@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinkjelly.live</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e6a4bd;
+        }
+    </style>
+</head>
+
+<body class="p-4">
+    <div class="text-center text-2xl">Stream Deck</div>
+    <script>
+        const sounds = [
+            {
+                src: 'sounds/aaah.mp3',
+            },
+            {
+                src: 'sounds/absolutely-huge.mp3',
+            },
+            {
+                src: 'sounds/awww.mp3',
+            },
+            {
+                src: 'sounds/excuse-me.mp3',
+            },
+            {
+                src: 'sounds/fucked-it.mp3',
+            },
+            {
+                src: 'sounds/ha-ha.mp3',
+            },
+            {
+                src: 'sounds/hhhooo.mp3',
+            },
+            {
+                src: 'sounds/holy-shit.mp3',
+            },
+            {
+                src: 'sounds/i-am-stressed.mp3',
+            },
+            {
+                src: 'sounds/i-cant.mp3',
+            },
+            {
+                src: 'sounds/i-dont-wanna-talk-about-it.mp3',
+            },
+            {
+                src: 'sounds/i-like-ox.mp3',
+            },
+            {
+                src: 'sounds/i-touched-his.mp3',
+            },
+            {
+                src: 'sounds/i-touched-the-man.mp3',
+            },
+            {
+                src: 'sounds/i-wanna-come.mp3',
+            },
+            {
+                src: 'sounds/i-will-take-that.mp3',
+            },
+            {
+                src: 'sounds/i-wouldnt-mind-5-inches.mp3',
+            },
+            {
+                src: 'sounds/im-feeling-it.mp3',
+            },
+            {
+                src: 'sounds/it-happened.mp3',
+            },
+            {
+                src: 'sounds/its-everywhere.mp3',
+            },
+            {
+                src: 'sounds/its-so-good.mp3',
+            },
+            {
+                src: 'sounds/its-unexpectedly-thick.mp3',
+            },
+            {
+                src: 'sounds/just-put-it-in.mp3',
+            },
+            {
+                src: 'sounds/lets-go.mp3',
+            },
+            {
+                src: 'sounds/make-it-work.mp3',
+            },
+            {
+                src: 'sounds/my-controller-is-all-wet-now.mp3',
+            },
+            {
+                src: 'sounds/nipples.mp3',
+            },
+            {
+                src: 'sounds/nuts.mp3',
+            },
+            {
+                src: 'sounds/oh-no.mp3',
+            },
+            {
+                src: 'sounds/omg-you-guys.mp3',
+            },
+            {
+                src: 'sounds/omg-you-guys-2.mp3',
+            },
+            {
+                src: 'sounds/ooo-ill-take-that.mp3',
+            },
+            {
+                src: 'sounds/ooo-the.mp3',
+            },
+            {
+                src: 'sounds/oooh-ha-ha-ha.mp3',
+            },
+            {
+                src: 'sounds/oooh.mp3',
+            },
+            {
+                src: 'sounds/oooh2.mp3',
+            },
+            {
+                src: 'sounds/pink.mp3',
+            },
+            {
+                src: 'sounds/shiiiit.mp3',
+            },
+            {
+                src: 'sounds/squeal.mp3',
+            },
+            {
+                src: 'sounds/that-was-a-thick-one.mp3',
+            },
+            {
+                src: 'sounds/that-was-hard.mp3',
+            },
+            {
+                src: 'sounds/the-fuck.mp3',
+            },
+            {
+                src: 'sounds/this-is-what-happens-when-you-get.mp3',
+            },
+            {
+                src: 'sounds/uhmm.mp3',
+            },
+            {
+                src: 'sounds/uuhuuh.mp3',
+            },
+            {
+                src: 'sounds/whaaat.mp3',
+            },
+            {
+                src: 'sounds/what-do-you-mean.mp3',
+            },
+            {
+                src: 'sounds/what-is-going-on-right-now.mp3',
+            },
+            {
+                src: 'sounds/yeah-man.mp3',
+            },
+        ];
+
+        function playSound(id) {
+            const sound = sounds.find(sound => sound.src === 'sounds/' + id + '.mp3');
+            if (!sound) {
+                return;
+            }
+            const audio = new Howl({
+                src: ['../' + sound.src]
+            });
+            audio.play();
+        }
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+        integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"
+        integrity="sha512-zN6KYOtONNTOGXz0RkWX2EpavN9VdIs+2w+To+fhciFv83YA9maUpi2lzZWrOfKXdFIZZomWufBznkyHi3a8oQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var socket = io('https://api.pinkjelly.live');
+        socket.on('play-sound', (args) => {
+            playSound(args.id);
+        });
+    </script>
+</body>
+
+</html>
