@@ -103,174 +103,214 @@
             </div>
         </div>
 
+        <script type="application/json" id="sounds-json">
+            [
+                {
+                    "id": 1,
+                    "src": "aaah.mp3"
+                },
+                {
+                    "id": 2,
+                    "src": "absolutely-huge.mp3"
+                },
+                {
+                    "id": 3,
+                    "src": "awww.mp3"
+                },
+                {
+                    "id": 4,
+                    "src": "excuse-me.mp3"
+                },
+                {
+                    "id": 5,
+                    "src": "fucked-it.mp3"
+                },
+                {
+                    "id": 6,
+                    "src": "ha-ha.mp3"
+                },
+                {
+                    "id": 7,
+                    "src": "hhhooo.mp3"
+                },
+                {
+                    "id": 8,
+                    "src": "holy-shit.mp3"
+                },
+                {
+                    "id": 9,
+                    "src": "i-am-stressed.mp3"
+                },
+                {
+                    "id": 10,
+                    "src": "i-cant.mp3"
+                },
+                {
+                    "id": 11,
+                    "src": "i-dont-wanna-talk-about-it.mp3"
+                },
+                {
+                    "id": 12,
+                    "src": "i-like-ox.mp3"
+                },
+                {
+                    "id": 13,
+                    "src": "i-touched-his.mp3"
+                },
+                {
+                    "id": 14,
+                    "src": "i-touched-the-man.mp3"
+                },
+                {
+                    "id": 15,
+                    "src": "i-wanna-come.mp3"
+                },
+                {
+                    "id": 16,
+                    "src": "i-will-take-that.mp3"
+                },
+                {
+                    "id": 17,
+                    "src": "i-wouldnt-mind-5-inches.mp3"
+                },
+                {
+                    "id": 18,
+                    "src": "im-feeling-it.mp3"
+                },
+                {
+                    "id": 19,
+                    "src": "it-happened.mp3"
+                },
+                {
+                    "id": 20,
+                    "src": "its-everywhere.mp3"
+                },
+                {
+                    "id": 21,
+                    "src": "its-so-good.mp3"
+                },
+                {
+                    "id": 22,
+                    "src": "its-unexpectedly-thick.mp3"
+                },
+                {
+                    "id": 23,
+                    "src": "just-put-it-in.mp3"
+                },
+                {
+                    "id": 24,
+                    "src": "lets-go.mp3"
+                },
+                {
+                    "id": 25,
+                    "src": "make-it-work.mp3"
+                },
+                {
+                    "id": 26,
+                    "src": "my-controller-is-all-wet-now.mp3"
+                },
+                {
+                    "id": 27,
+                    "src": "nipples.mp3"
+                },
+                {
+                    "id": 28,
+                    "src": "nuts.mp3"
+                },
+                {
+                    "id": 29,
+                    "src": "oh-no.mp3"
+                },
+                {
+                    "id": 30,
+                    "src": "omg-you-guys.mp3"
+                },
+                {
+                    "id": 31,
+                    "src": "omg-you-guys-2.mp3"
+                },
+                {
+                    "id": 32,
+                    "src": "ooo-ill-take-that.mp3"
+                },
+                {
+                    "id": 33,
+                    "src": "ooo-the.mp3"
+                },
+                {
+                    "id": 34,
+                    "src": "oooh-ha-ha-ha.mp3"
+                },
+                {
+                    "id": 35,
+                    "src": "oooh.mp3"
+                },
+                {
+                    "id": 36,
+                    "src": "oooh2.mp3"
+                },
+                {
+                    "id": 37,
+                    "src": "pink.mp3"
+                },
+                {
+                    "id": 38,
+                    "src": "shiiiit.mp3"
+                },
+                {
+                    "id": 39,
+                    "src": "squeal.mp3"
+                },
+                {
+                    "id": 40,
+                    "src": "that-was-a-thick-one.mp3"
+                },
+                {
+                    "id": 41,
+                    "src": "that-was-hard.mp3"
+                },
+                {
+                    "id": 42,
+                    "src": "the-fuck.mp3"
+                },
+                {
+                    "id": 43,
+                    "src": "this-is-what-happens-when-you-get.mp3"
+                },
+                {
+                    "id": 44,
+                    "src": "uhmm.mp3"
+                },
+                {
+                    "id": 45,
+                    "src": "uuhuuh.mp3"
+                },
+                {
+                    "id": 46,
+                    "src": "whaaat.mp3"
+                },
+                {
+                    "id": 47,
+                    "src": "what-do-you-mean.mp3"
+                },
+                {
+                    "id": 48,
+                    "src": "what-is-going-on-right-now.mp3"
+                },
+                {
+                    "id": 49,
+                    "src": "yeah-man.mp3"
+                }
+            ]
+        </script>
         <script>
             const PLAYLIST_MAX = 10;
-            const sounds = [
-                {
-                    label: 'Aaaah',
-                    src: '../sounds/aaah.mp3',
-                },
-                {
-                    label: 'Absolutely huge',
-                    src: '../sounds/absolutely-huge.mp3',
-                },
-                {
-                    label: 'Awwww',
-                    src: '../sounds/awww.mp3',
-                },
-                {
-                    label: 'Excuse me',
-                    src: '../sounds/excuse-me.mp3',
-                },
-                {
-                    label: 'Fucked it',
-                    src: '../sounds/fucked-it.mp3',
-                },
-                {
-                    label: 'Ha ha',
-                    src: '../sounds/ha-ha.mp3',
-                },
-                {
-                    label: 'Hhhooo',
-                    src: '../sounds/hhhooo.mp3',
-                },
-                {
-                    label: 'Holy shit',
-                    src: '../sounds/holy-shit.mp3',
-                },
-                {
-                    label: 'I am stressed',
-                    src: '../sounds/i-am-stressed.mp3',
-                },
-                {
-                    src: '../sounds/i-cant.mp3',
-                },
-                {
-                    src: '../sounds/i-dont-wanna-talk-about-it.mp3',
-                },
-                {
-                    src: '../sounds/i-like-ox.mp3',
-                },
-                {
-                    src: '../sounds/i-touched-his.mp3',
-                },
-                {
-                    src: '../sounds/i-touched-the-man.mp3',
-                },
-                {
-                    src: '../sounds/i-wanna-come.mp3',
-                },
-                {
-                    src: '../sounds/i-will-take-that.mp3',
-                },
-                {
-                    src: '../sounds/i-wouldnt-mind-5-inches.mp3',
-                },
-                {
-                    src: '../sounds/im-feeling-it.mp3',
-                },
-                {
-                    src: '../sounds/it-happened.mp3',
-                },
-                {
-                    src: '../sounds/its-everywhere.mp3',
-                },
-                {
-                    src: '../sounds/its-so-good.mp3',
-                },
-                {
-                    src: '../sounds/its-unexpectedly-thick.mp3',
-                },
-                {
-                    src: '../sounds/just-put-it-in.mp3',
-                },
-                {
-                    src: '../sounds/lets-go.mp3',
-                },
-                {
-                    src: '../sounds/make-it-work.mp3',
-                },
-                {
-                    src: '../sounds/my-controller-is-all-wet-now.mp3',
-                },
-                {
-                    src: '../sounds/nipples.mp3',
-                },
-                {
-                    src: '../sounds/nuts.mp3',
-                },
-                {
-                    src: '../sounds/oh-no.mp3',
-                },
-                {
-                    src: '../sounds/omg-you-guys.mp3',
-                },
-                {
-                    src: '../sounds/omg-you-guys-2.mp3',
-                },
-                {
-                    src: '../sounds/ooo-ill-take-that.mp3',
-                },
-                {
-                    src: '../sounds/ooo-the.mp3',
-                },
-                {
-                    src: '../sounds/oooh-ha-ha-ha.mp3',
-                },
-                {
-                    src: '../sounds/oooh.mp3',
-                },
-                {
-                    src: '../sounds/oooh2.mp3',
-                },
-                {
-                    src: '../sounds/pink.mp3',
-                },
-                {
-                    src: '../sounds/shiiiit.mp3',
-                },
-                {
-                    src: '../sounds/squeal.mp3',
-                },
-                {
-                    src: '../sounds/that-was-a-thick-one.mp3',
-                },
-                {
-                    src: '../sounds/that-was-hard.mp3',
-                },
-                {
-                    src: '../sounds/the-fuck.mp3',
-                },
-                {
-                    src: '../sounds/this-is-what-happens-when-you-get.mp3',
-                },
-                {
-                    src: '../sounds/uhmm.mp3',
-                },
-                {
-                    src: '../sounds/uuhuuh.mp3',
-                },
-                {
-                    src: '../sounds/whaaat.mp3',
-                },
-                {
-                    src: '../sounds/what-do-you-mean.mp3',
-                },
-                {
-                    src: '../sounds/what-is-going-on-right-now.mp3',
-                },
-                {
-                    src: '../sounds/yeah-man.mp3',
-                },
-            ].map(sound => {
-                sound.id = sound.src.replace(/^[./]*sounds\/|\.mp3$/ig, '');
-                return sound;
-            }).sort((s1, s2) => s1.src < s2.src ? -1 : 1);
-
+            const sounds = JSON.parse(document.getElementById('sounds-json').textContent).sort((s1, s2) => s1.src < s2.src ? -1 : 1);
+            const ALL_IDS = sounds.map(s => s.id);
             let playlist = [];
 
             function getSound(id) {
-                return sounds.find(sound => sound.id === id);
+                return sounds.find(sound => sound.id == id);
             }
 
             function makeLabel(sound) {
@@ -312,7 +352,7 @@
                     const node = e.target;
                     const parent = node.closest('[data-sound-id]');
                     if (!parent) return;
-                    addToPlaylist(parent.dataset.soundId);
+                    addToPlaylist(parseInt(parent.dataset.soundId, 10));
                 }));
             }
 
@@ -331,7 +371,7 @@
             }
 
             function playSound(sound) {
-                let audio = new Audio(sound.src);
+                let audio = new Audio('../sounds/' + sound.src);
                 audio.addEventListener('ended', e => {
                     audio.src = '';
                     audio = undefined;
@@ -341,7 +381,7 @@
 
             function playSequence(sounds) {
                 let queue = sounds.map(sound => {
-                    const a = new Audio(sound.src);
+                    const a = new Audio('../sounds/' + sound.src);
                     a.addEventListener('canplaythrough', () => { });
                     return a;
                 });
@@ -379,8 +419,33 @@
 
             function addToPlaylist(id) {
                 if (playlist.length >= PLAYLIST_MAX) return;
+                if (!ALL_IDS.includes(id)) return;
                 playlist.push(id);
                 renderPlaylist();
+            }
+
+            function ntobin(n, length) {
+                return ('0'.repeat(length || 0) + (n.toString(2))).slice(-(length || 0));
+            }
+
+            const alphabet = 'abcdefghjkmnpqrstuvwxyz123456789';
+            function idsToHash(ids) {
+                // Bits are: pjsb (20 bits) + version (2 bits) + ids (7 bits each).
+                const header = [12, 8, 15, 1].map(n => ntobin(n, 5)).join('');
+                const version = '00';
+                const sequence = ids.map(n => ntobin(n, 7)).join('');
+                const length = 20 + 2 + sequence.length;
+                const padding = length % 5 ? 5 - length % 5 : 0;
+                const bits = header + version + sequence + '0'.repeat(padding);
+                // Split in 5 characters per each 5 bit.
+                return bits.match(/.{5}/g).map(c => alphabet[parseInt(c, 2)]).join('');
+            }
+
+            function hashToIds(hash) {
+                const bits = hash.split('').map(c => ntobin(alphabet.indexOf(c), 5)).join('');
+                if (bits.length % 5 !== 0 || bits.length < 29) return [];
+                const ids = bits.slice(22).match(/.{7}/g).map(n => parseInt(n, 2));
+                return ids.slice(0, 10).filter(id => ALL_IDS.includes(id));
             }
 
             function renderPlaylist() {
@@ -415,6 +480,8 @@
                         node.classList.remove('hidden');
                     }
                 });
+
+                window.location.hash = playlist.length ? idsToHash(playlist) : '';
             }
 
             function playListInit() {
@@ -425,10 +492,21 @@
                     }));
                 document.querySelectorAll('[data-action=playlist-add]').forEach(node =>
                     node.addEventListener('click', e => {
-                        addToPlaylist(node.dataset.soundId);
+                        addToPlaylist(parseInt(node.dataset.soundId, 10));
                     }));
 
-                playlist = makeMashup();
+                window.addEventListener('hashchange', e => {
+                    if (window.location.hash.indexOf('#pjsb') === 0) {
+                        playlist = hashToIds(window.location.hash.slice(1));
+                        renderPlaylist();
+                    }
+                });
+
+                if (window.location.hash.indexOf('#pjsb') === 0) {
+                    playlist = hashToIds(window.location.hash.slice(1));
+                } else {
+                    playlist = makeMashup();
+                }
             }
 
             function playPlaylist() {
