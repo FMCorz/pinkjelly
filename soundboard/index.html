@@ -371,50 +371,20 @@
             }
 
             function playSound(sound) {
-                let audio = new Audio('../sounds/' + sound.src);
-                audio.addEventListener('ended', e => {
-                    audio.src = '';
-                    audio = undefined;
-                });
-                playAudio(audio);
+                const audio = new Howl({ src: ['../sounds/' + sound.src] });
+                audio.play();
             }
 
             function playSequence(sounds) {
-                let queue = sounds.map(sound => {
-                    const a = new Audio('../sounds/' + sound.src);
-                    a.addEventListener('canplaythrough', () => { });
-                    return a;
-                });
-                queue.reverse();
-
-                function playNext() {
-                    let audio = queue.pop();
-                    if (!audio) return;
-                    audio.addEventListener('ended', e => {
-                        audio.src = '';
-                        playNext();
-                    });
-                    playAudio(audio);
+                if (!sounds.length) {
+                    return;
                 }
-
-                playNext();
-            }
-
-            function playAudio(audio) {
-                // Play when progress is sufficient and we're not playing.
-                audio.addEventListener('progress', e => {
-                    if (audio.readyState < 0 || (audio.duration > 0 && audio.currentTime > 0)) return;
-                    audio.play();
+                const howls = sounds.map(s => new Howl({ src: ['../sounds/' + s.src] }));
+                howls.forEach((sound, idx) => {
+                    if (idx + 1 >= howls.length) return;
+                    sound.on('end', () => howls[idx + 1].play())
                 });
-                // Play when we can play.
-                audio.addEventListener('canplaythrough', e => {
-                    if (audio.duration > 0 && audio.currentTime > 0) return;
-                    audio.play();
-                });
-                // Play immediately if possible.
-                if (audio.readyState >= 1) {
-                    audio.play();
-                }
+                howls[0].play();
             }
 
             function addToPlaylist(id) {
@@ -521,6 +491,9 @@
             registerButtons();
         </script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+            integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </body>
 
