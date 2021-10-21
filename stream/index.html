@@ -7,15 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pinkjelly.live</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #e6a4bd;
-        }
-    </style>
+    <style></style>
 </head>
 
-<body class="p-4">
-    <div class="text-center text-2xl">Stream Deck</div>
+<body class="p-4 bg-transparent text-transparent">
+
+    <div id="giffy-player" class="absolute z-10 inset-0 flex items-center justify-center hidden">
+        <img src="https://media.giphy.com/media/lO5vvG3F58rb8wMmxf/giphy.gif" class="w-full" />
+    </div>
 
     <script type="application/json" id="sounds-json">
         [
@@ -222,6 +221,15 @@
         const sounds = JSON.parse(document.getElementById('sounds-json').textContent).sort((s1, s2) => s1.src < s2.src ? -1 : 1);
         const ALL_IDS = sounds.map(s => s.id);
 
+        function playGiffy(id) {
+            const root = document.getElementById('giffy-player');
+            root.querySelector('img').setAttribute('src', 'https://media.giphy.com/media/' + id + '/giphy.gif');
+            root.classList.remove('hidden');
+            setTimeout(() => {
+                root.classList.add('hidden');
+            }, 5000);
+        }
+
         function playSound(id) {
             let sound;
             if (id === '_random') {
@@ -284,6 +292,11 @@
         socket.on('play-mashup', (args) => {
             console.log('Playing mashup', args.hash);
             playMashup(args.hash || '');
+        });
+
+        socket.on('play-giffy', (args) => {
+            console.log('Playing giffy', args.id);
+            playGiffy(args.id || '-');
         });
 
         socket.on('reload', () => {
