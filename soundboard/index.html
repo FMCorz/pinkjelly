@@ -56,7 +56,21 @@
                         </button>
                     </div>
                 </div>
+                <div class="mt-4 text-xs flex w-full">
+                    <div class="flex flex-grow shadow">
+                        <div class="bg-gray-700 text-white rounded-l px-2 flex items-center">Direct link</div>
+                        <div class="flex-grow">
+                            <input type="text" value="" class="rounded-r w-full px-2 py-1" readonly onfocus="this.select()"
+                                onclick="this.select()" onmousedown="this.select()" placeholder="Select sounds..."
+                                id="playlist-link">
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 ml-1 px-4">
+                        <div class="w-8 " style="font-size: 1px;">&nbsp;</div>
+                    </div>
+                </div>
             </div>
+
         </div>
 
 
@@ -451,7 +465,12 @@
                     }
                 });
 
-                window.location.hash = playlist.length ? idsToHash(playlist) : '';
+                const rootUrl = location.protocol + '//' + location.host + location.pathname + (location.search ? location.search : "");
+                const hash = playlist.length ? idsToHash(playlist) : undefined;
+                window.location.hash = hash ? hash : '';
+                document.querySelectorAll('#playlist-link').forEach(node => {
+                    node.value = hash ? rootUrl + '#' + hash : '';
+                });
             }
 
             function playListInit() {
