@@ -220,6 +220,7 @@
     <script>
         const PLAYLIST_MAX = 10;
         const sounds = JSON.parse(document.getElementById('sounds-json').textContent).sort((s1, s2) => s1.src < s2.src ? -1 : 1);
+        const ALL_IDS = sounds.map(s => s.id);
 
         function playSound(id) {
             let sound;
@@ -236,6 +237,33 @@
             audio.play();
         }
 
+        function playMashup(hash) {
+            const ids = hashToIds(hash);
+            const audios = ids.map(id => sounds.find(s => s.id == id));
+            if (!audios.length) {
+                return;
+            }
+            const howls = audios.map(s => new Howl({ src: ['../sounds/' + s.src] }));
+            howls.forEach((audio, idx) => {
+                if (idx + 1 >= howls.length) return;
+                audio.on('end', () => howls[idx + 1].play())
+            });
+            howls[0].play();
+        }
+
+        function ntobin(n, length) {
+            return ('0'.repeat(length || 0) + (n.toString(2))).slice(-(length || 0));
+        }
+
+        const alphabet = 'abcdefghjkmnpqrstuvwxyz123456789';
+
+        function hashToIds(hash) {
+            const bits = hash.split('').map(c => ntobin(alphabet.indexOf(c), 5)).join('');
+            if (bits.length % 5 !== 0 || bits.length < 29) return [];
+            const ids = bits.slice(22).match(/.{7}/g).map(n => parseInt(n, 2));
+            return ids.slice(0, 10).filter(id => ALL_IDS.includes(id));
+        }
+
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
@@ -249,7 +277,13 @@
         var socket = io(host);
 
         socket.on('play-sound', (args) => {
-            playSound(args.id);
+            console.log('Playing sound', args.id);
+            playSound(args.id || 0);
+        });
+
+        socket.on('play-mashup', (args) => {
+            console.log('Playing mashup', args.hash);
+            playMashup(args.hash || '');
         });
 
         socket.on('reload', () => {
