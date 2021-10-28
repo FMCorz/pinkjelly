@@ -117,6 +117,11 @@
             }, 8000);
         }
 
+        function playAudio(url, format) {
+            const audio = new Howl({ src: [url], format: Boolean(format) ? [format] : undefined });
+            audio.play();
+        }
+
         function playSound(id) {
             let sound;
             if (id === '_random') {
@@ -128,8 +133,7 @@
             if (!sound) {
                 return;
             }
-            const audio = new Howl({ src: ['../sounds/' + sound.src] });
-            audio.play();
+            playAudio('../sounds/' + sound.src);
         }
 
         function playMashup(hash) {
@@ -170,6 +174,11 @@
     <script>
         var host = window.location.host === 'localhost' ? 'localhost:3000' : 'https://pinkjelly.herokuapp.com';
         var socket = io(host);
+
+        socket.on('play-mp3', (args) => {
+            console.log('Playing MP3', args.url);
+            playAudio(args.url, 'mp3');
+        });
 
         socket.on('play-sound', (args) => {
             console.log('Playing sound', args.id);
