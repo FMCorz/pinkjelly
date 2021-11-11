@@ -102,8 +102,9 @@
             </button>
 
             <div id="tpl-sound-sample" data-sound-id="1" class="flex space-x-1">
-                <div class="bg-white font-medium px-2 py-1 inline-flex rounded text-sm select-none items-center truncate flex-grow">
-                    <span class="label">Aaaah</span>
+                <div class="bg-white font-medium px-2 py-1 inline-flex rounded text-sm select-none items-center flex-grow truncate">
+                    <div class="label flex-grow truncate">Aaaah</div>
+                    <div class="new ml-1 flex-grow-0 hidden">🆕</div>
                 </div>
 
                 <button data-action="sound-add"
@@ -228,6 +229,7 @@
             const PLAYLIST_MAX = 10;
             const sounds = JSON.parse(document.getElementById('sounds-json').textContent).sort((s1, s2) => s1.src < s2.src ? -1 : 1);
             const ALL_IDS = sounds.map(s => s.id);
+            const newSounds = sounds.filter(sound => sound.id > 84);
             let playlist = [];
 
             function getSound(id) {
@@ -257,8 +259,12 @@
 
                 sounds.forEach(sound => {
                     const node = tpl.cloneNode(true);
+                    const isNew = newSounds.includes(sound);
                     node.setAttribute('data-sound-id', sound.id);
                     node.querySelector('.label').textContent = makeLabel(sound);
+                    if (isNew) {
+                        node.querySelector('.new').classList.remove('hidden');
+                    }
                     root.appendChild(node);
                 });
 
