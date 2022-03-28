@@ -202,7 +202,7 @@
         integrity="sha512-zN6KYOtONNTOGXz0RkWX2EpavN9VdIs+2w+To+fhciFv83YA9maUpi2lzZWrOfKXdFIZZomWufBznkyHi3a8oQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        var host = window.location.host === 'localhost' ? 'localhost:3000' : 'https://pinkjelly.herokuapp.com';
+        var host = window.location.host === 'localhost' ? 'http://localhost:3000' : 'https://pinkjelly.herokuapp.com';
         var socket = io(host);
 
         socket.on('play-mp3', (args) => {
@@ -228,6 +228,19 @@
         socket.on('reload', () => {
             window.location.reload();
         });
+
+        async function keepAlive() {
+            console.log('Keeping alive...');
+            try {
+                await fetch(`${host}/ping`);
+            } catch (e) {
+                console.log(e);
+            }
+            const delay = Math.round((Math.random() * 60 + 120) * 1000);
+            console.log(`Next keep alive in ${delay}ms`);
+            setTimeout(keepAlive, delay);
+        }
+        keepAlive();
     </script>
 </body>
 
