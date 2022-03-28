@@ -156,12 +156,12 @@
         }
 
         function playMashup(hash) {
-            const ids = hashToIds(hash);
+            const [ids, options] = hashToIds(hash);
             const audios = ids.map(id => sounds.find(s => s.id == id));
             if (!audios.length) {
                 return;
             }
-            const howls = audios.map(s => new Howl({ src: ['../sounds/' + s.src] }));
+            const howls = audios.map(s => new Howl({ src: ['../sounds/' + s.src], rate: options.rate }));
             howls.forEach((audio, idx) => {
                 if (idx + 1 >= howls.length) return;
                 audio.on('end', () => howls[idx + 1].play())
@@ -178,8 +178,19 @@
         function hashToIds(hash) {
             const bits = hash.split('').map(c => ntobin(alphabet.indexOf(c), 5)).join('');
             if (bits.length % 5 !== 0 || bits.length < 29) return [];
-            const ids = bits.slice(22).match(/.{7}/g).map(n => parseInt(n, 2));
-            return ids.slice(0, 10).filter(id => ALL_IDS.includes(id));
+            const version = parseInt(bits.slice(20, 22), 2);
+
+            let isSpeedy = false;
+            let ids = [];
+            if (version < 1) {
+                ids = bits.slice(22).match(/.{7}/g).map(n => parseInt(n, 2));
+            } else {
+                isSpeedy = Boolean(parseInt(bits.slice(22, 23), 2));
+                ids = bits.slice(23).match(/.{8}/g).map(n => parseInt(n, 2));
+            }
+            return [ids.slice(0, 10).filter(id => ALL_IDS.includes(id)), {
+                rate: isSpeedy ? 1.25 : 1
+            }];
         }
 
     </script>
