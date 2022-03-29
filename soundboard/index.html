@@ -445,6 +445,9 @@
                     }
                 });
 
+                // Update options.
+                speedyCheckbox.checked = isSpeedy;
+
                 const rootUrl = location.protocol + '//' + location.host + location.pathname + (location.search ? location.search : "");
                 const hash = playlist.length ? idsToHashV2(playlist, isSpeedy) : undefined;
                 window.location.hash = hash ? hash : '';
